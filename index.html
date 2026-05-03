@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cumabao Integrated School Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo-container">
+            <!-- Ensure your image file is named exactly "CIS logo.jpg" in your folder -->
+            <img src="CIS logo.jpg" alt="Cumabao Integrated School Logo" class="school-logo">
+            <div class="logo-text">
+                <h2>Cumabao Integrated School</h2>
+                <span>Est. 2006</span>
+            </div>
+        </div>
+        <ul>
+            <li><a href="#announcements">Announcements</a></li>
+            <li><a href="#tracker">Progress Tracker</a></li>
+            <li><a href="#forms">Forms</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Welcome to Cumabao Integrated School</h1>
+        <p>Providing quality education since 2006.</p>
+    </header>
+
+    <main>
+        <section id="announcements">
+            <h3>📢 School Announcements</h3>
+            <div class="card-container">
+                <div class="card urgent">
+                    <strong>Weather Update:</strong> Class suspensions will be posted here.
+                </div>
+                <div class="card">
+                    <strong>PTA Meeting:</strong> Join us this Friday at 3:00 PM.
+                </div>
+                <div class="card">
+                    <strong>Enrollment:</strong> Now accepting applications for the new school year.
+                </div>
+            </div>
+        </section>
+
+        <section id="tracker" class="highlight-section">
+            <h3>📊 Student Progress Tracker</h3>
+            <p>Enter your Student ID to view current grades and attendance.</p>
+            <div class="login-box">
+                <input type="text" id="studentID" placeholder="Try ID: 200601">
+                <button onclick="checkProgress()">View Progress</button>
+            </div>
+            <div id="gradeResult"></div>
+        </section>
+
+        <section id="forms">
+            <h3>🧾 Online Forms & Requests</h3>
+            <div class="form-grid">
+                <div class="card">
+                    <h4>Document Request</h4>
+                    <p>Request copies of report cards or certificates.</p>
+                    <button class="btn-secondary">Open Form</button>
+                </div>
+                <div class="card">
+                    <h4>Enrollment Form</h4>
+                    <p>Register new students for the upcoming term.</p>
+                    <button class="btn-secondary">Start Application</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Cumabao Integrated School. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
