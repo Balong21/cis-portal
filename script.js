@@ -1,5 +1,5 @@
 const studentRecords = {
-    "200603": {
+    "103874120102": {
         name: "Lloyd Pogi",
         grade: "Grade 5",
         math: "98",
@@ -33,6 +33,6 @@ function checkProgress() {
             </div>
         `;
     } else {
-        displayArea.innerHTML = `<p style="color: #d32f2f; margin-top: 15px;">ID not found. Try 200603.</p>`;
+        displayArea.innerHTML = `<p style="color: #d32f2f; margin-top: 15px;">ID not found. Try 103874120102.</p>`;
     }
 }
