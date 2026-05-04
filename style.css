@@ -1,13 +1,15 @@
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
-    background-color: #f0f4f8;
-    color: #333;
+    /* Light green/mint background */
+    background-color: #f0f9f4; 
+    color: #2d3436;
     scroll-behavior: smooth;
 }
 
 nav {
-    background: #0056b3;
+    /* Dark Forest Green */
+    background: #1b5e20; 
     color: white;
     padding: 10px 5%;
     display: flex;
@@ -16,6 +18,7 @@ nav {
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .logo-container { display: flex; align-items: center; gap: 15px; }
@@ -24,16 +27,18 @@ nav {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    border: 2px solid white;
+    border: 2px solid #a5d6a7;
     background: white;
     object-fit: cover;
 }
 
 nav ul { list-style: none; display: flex; gap: 20px; }
-nav ul li a { color: white; text-decoration: none; font-weight: bold; }
+nav ul li a { color: white; text-decoration: none; font-weight: bold; transition: 0.3s; }
+nav ul li a:hover { color: #a5d6a7; }
 
 header {
-    background: #3498db;
+    /* Vibrant Green Gradient */
+    background: linear-gradient(135deg, #2e7d32, #4caf50);
     color: white;
     text-align: center;
     padding: 60px 20px;
@@ -46,8 +51,9 @@ section { padding: 40px 5%; max-width: 1000px; margin: auto; }
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 15px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    border-left: 5px solid #0056b3;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    /* Green left border */
+    border-left: 5px solid #2e7d32; 
 }
 
 .teacher-grid, .form-grid {
@@ -62,26 +68,44 @@ section { padding: 40px 5%; max-width: 1000px; margin: auto; }
     font-style: italic;
 }
 
-.urgent { border-left-color: #e74c3c; }
+/* Red for urgent, but keeping it green-themed */
+.urgent { border-left-color: #d32f2f; background-color: #fff5f5; }
 
 .highlight-section {
-    background: #ffffff;
+    background: #e8f5e9; /* Very light green section */
     border-radius: 20px;
     text-align: center;
 }
 
-input { padding: 12px; width: 220px; border-radius: 5px; border: 1px solid #ccc; }
+input { 
+    padding: 12px; 
+    width: 220px; 
+    border-radius: 5px; 
+    border: 2px solid #a5d6a7; 
+    outline: none;
+}
+
+input:focus { border-color: #2e7d32; }
 
 button {
     padding: 12px 25px;
-    background: #27ae60;
+    background: #2e7d32; /* Solid Green Button */
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
+    transition: 0.3s;
 }
 
-.btn-secondary { background: #34495e; }
+button:hover { background: #1b5e20; }
 
-footer { text-align: center; padding: 20px; background: #2c3e50; color: white; margin-top: 50px; }
+.btn-secondary { background: #607d8b; }
+
+footer { 
+    text-align: center; 
+    padding: 20px; 
+    background: #1b5e20; 
+    color: white; 
+    margin-top: 50px; 
+}
