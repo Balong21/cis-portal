@@ -9,19 +9,14 @@ const studentRecords = {
     }
 };
 
-// Function to handle the section "Pop Up" effect
+// Controls the Pop-up effect
 function showSection(sectionId) {
-    // 1. Get all sections
     const sections = document.querySelectorAll('.content-section');
-    
-    // 2. Hide all of them
     sections.forEach(section => {
         section.classList.add('hidden');
     });
     
-    // 3. Show only the clicked one
-    const activeSection = document.getElementById(sectionId);
-    activeSection.classList.remove('hidden');
+    document.getElementById(sectionId).classList.remove('hidden');
 }
 
 function checkProgress() {
