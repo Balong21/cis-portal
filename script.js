@@ -9,7 +9,6 @@ const studentRecords = {
     }
 };
 
-// Controls the Pop-up effect
 function showSection(sectionId) {
     const sections = document.querySelectorAll('.content-section');
     sections.forEach(section => {
