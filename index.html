@@ -17,23 +17,23 @@
             </div>
         </div>
         <ul>
-            <li><a href="#announcements">Announcements</a></li>
-            <li><a href="#teachers">Teachers</a></li>
-            <li><a href="#tracker">Progress Tracker</a></li>
-            <li><a href="#forms">Forms</a></li>
+            <!-- We use '#' and onclick to trigger the JavaScript function -->
+            <li><a href="#" onclick="showSection('announcements')">Announcements</a></li>
+            <li><a href="#" onclick="showSection('teachers')">Teachers</a></li>
+            <li><a href="#" onclick="showSection('tracker')">Progress Tracker</a></li>
         </ul>
     </nav>
 
-    <!-- Background uses BG.jpg with low transparency overlay -->
     <header class="hero">
         <div class="hero-overlay">
-            <h1>Welcome to Cumabao Integrated School </h1>
+            <h1>Welcome to the Smart Portal</h1>
             <p>Providing quality education since 2006.</p>
         </div>
     </header>
 
     <main>
-        <section id="announcements">
+        <!-- Sections are hidden by default via CSS class "hidden" -->
+        <section id="announcements" class="content-section">
             <h3>📢 School Announcements</h3>
             <div class="announcement-list">
                 <div class="card urgent">
@@ -45,25 +45,25 @@
             </div>
         </section>
 
-        <section id="teachers">
+        <section id="teachers" class="content-section hidden">
             <h3>👩‍🏫 Teacher Directory</h3>
             <div class="teacher-grid">
                 <div class="card teacher-card">
-                    <h4>Mr. John Lloyd Ruz</h4>
+                    <h4>Mrs. Reyes</h4>
                     <p>Grade 1 Adviser</p>
                 </div>
                 <div class="card teacher-card">
-                    <h4>Mr. Jerry Ruz</h4>
+                    <h4>Mr. Bautista</h4>
                     <p>Grade 6 Math</p>
                 </div>
                 <div class="card teacher-card">
-                    <h4>Mrs. Ruby Ruz</h4>
+                    <h4>Ms. Gomez</h4>
                     <p>Science Department</p>
                 </div>
             </div>
         </section>
 
-        <section id="tracker" class="highlight-section">
+        <section id="tracker" class="content-section hidden highlight-section">
             <h3>📊 Student Progress Tracker</h3>
             <p>Enter Student ID to view grades (Try: 103874120102)</p>
             <div class="search-box">

@@ -6,16 +6,23 @@ const studentRecords = {
         science: "97",
         english: "99",
         attendance: "100%"
-    },
-    "200601": {
-        name: "Juan Dela Cruz",
-        grade: "Grade 6",
-        math: "92",
-        science: "88",
-        english: "95",
-        attendance: "98%"
     }
 };
+
+// Function to handle the section "Pop Up" effect
+function showSection(sectionId) {
+    // 1. Get all sections
+    const sections = document.querySelectorAll('.content-section');
+    
+    // 2. Hide all of them
+    sections.forEach(section => {
+        section.classList.add('hidden');
+    });
+    
+    // 3. Show only the clicked one
+    const activeSection = document.getElementById(sectionId);
+    activeSection.classList.remove('hidden');
+}
 
 function checkProgress() {
     const idInput = document.getElementById('studentID').value;
