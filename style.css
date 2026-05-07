@@ -48,7 +48,7 @@ body, html {
 }
 
 .portal-btn {
-    background-color: #4e73df; /* The specific blue from your image */
+    background-color: #5ddf4e; /* The specific blue from your image */
     color: white;
     padding: 12px;
     border: none;
@@ -61,7 +61,7 @@ body, html {
 }
 
 .portal-btn:hover {
-    background-color: #2e59d9;
+    background-color: #5ddf4e;
     transform: scale(1.02);
 }
 
@@ -73,7 +73,7 @@ body, html {
     height: 60px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #4e73df;
+    border: 2px solid #5ddf4e;
 }
 
 .content-section {
