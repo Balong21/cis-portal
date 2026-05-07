@@ -1,55 +1,106 @@
+/* --- COMPLETE style.css --- */
+
 body {
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
-    background: #f4f7f6;
+    background-color: #f9fdfa;
+    color: #333;
+    scroll-behavior: smooth;
+}
+
+/* 1. Header & Navigation (Logo size defined here: 60px) */
+nav {
+    background: #1b4d2e;
+    color: white;
+    padding: 15px 5%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
+    gap: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.sias-container {
-    text-align: center;
-    padding-top: 50px;
+.logo-container { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.school-logo { width: 60px; height: 60px; border-radius: 50%; background: white; margin-bottom: 5px; }
+
+nav h2 { margin: 0; font-size: 1.3rem; }
+nav span { font-size: 0.8rem; opacity: 0.8; }
+
+nav ul { list-style: none; display: flex; justify-content: center; gap: 30px; padding: 0; margin: 0; }
+nav ul li a { color: white; text-decoration: none; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.3s; }
+nav ul li a:hover { color: #a5d6a7; }
+
+/* 2. Hero Section */
+.hero {
+    height: 400px;
+    background: url('BG.jpg') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.2); 
     width: 100%;
-    max-width: 500px;
-    transition: opacity 0.3s ease;
-}
-
-.sias-logo { width: 120px; height: 120px; margin-bottom: 10px; }
-.sias-header h1 { color: #1b4d2e; margin: 5px 0; }
-.version-tag { color: #2e7d32; font-weight: bold; font-size: 0.8rem; }
-
-.portal-grid { display: flex; flex-direction: column; gap: 12px; margin-top: 30px; padding: 0 20px; }
-
-/* CIS Green Buttons */
-.portal-btn {
-    padding: 15px;
-    font-size: 1rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    background: #1b4d2e; /* CIS Green */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     color: white;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: 0.3s;
+    text-shadow: 2px 2px 10px rgba(0,0,0,1); 
 }
 
-.portal-btn:hover { background: #2e7d32; transform: translateY(-2px); }
+.hero h1 { font-size: 3rem; margin-bottom: 10px; font-weight: bold; }
 
-.hidden { display: none !important; }
+/* 3. Sections & Core Card styling */
+.hidden { display: none; }
 
-/* Content Pages Styling */
-#portal-content { width: 100%; max-width: 800px; padding: 20px; display: none; }
-.content-section { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-
-.back-btn {
-    background: none;
-    border: none;
-    color: #1b4d2e;
-    font-weight: bold;
-    cursor: pointer;
-    margin-bottom: 20px;
-    font-size: 1rem;
+.content-section {
+    padding: 40px 10%;
+    animation: fadeIn 0.5s ease-in-out;
 }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card { background: white; padding: 20px; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-left: 5px solid #2e7d32; }
+.urgent { border-left-color: #d32f2f; background-color: #fffafa; }
+
+/* 4. Teacher Directory (UPDATED Photo Styling) */
+.teacher-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; }
+
+.teacher-card { 
+    text-align: center; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    /* Reduced padding to suit the smaller photo */
+    padding: 15px 10px; 
+}
+
+/* UPDATED SIZE to match the 60px logo */
+.teacher-photo { 
+    width: 60px; 
+    height: 60px; 
+    border-radius: 50%; /* Circular */
+    object-fit: cover; /* Prevents stretch */
+    margin-bottom: 10px; /* Reduced space below photo */
+    border: 3px solid #1b4d2e; /* Green border from your portal */
+}
+
+/* Adjusting text size to match the smaller photo scale */
+.teacher-card h4 { margin: 0; font-size: 1.1rem; }
+.teacher-card p { margin: 5px 0 0 0; font-size: 0.9rem; color: #666; }
+
+/* 5. Tracker Section */
+.highlight-section { background: #eef7f0; text-align: center; border-radius: 15px; }
+input { padding: 12px; width: 250px; border: 2px solid #a5d6a7; border-radius: 5px; outline: none; }
+button { padding: 12px 25px; background: #1b4d2e; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
+
+/* 6. Footer */
+footer { background: #1b4d2e; color: white; text-align: center; padding: 20px; margin-top: 40px; }
