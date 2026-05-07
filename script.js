@@ -1,15 +1,26 @@
 const studentRecords = {
-    "103874120102": { name: "Lloyd Pogi", math: "98", science: "97" }
+    "103874120102": { 
+        name: "Lloyd Pogi", 
+        grade: "Grade 5",
+        math: "98", 
+        science: "97",
+        english: "99",
+        attendance: "100%" 
+    }
 };
 
 function enterSection(sectionId) {
+    // Hide home screen, show content container
     document.getElementById('portal-home').style.display = 'none';
     document.getElementById('portal-content').classList.remove('hidden');
     
-    // Hide all internal sections, then show the specific one
+    // Hide all individual sections first
     const sections = document.querySelectorAll('.content-section');
     sections.forEach(s => s.style.display = 'none');
+    
+    // Show the requested section
     document.getElementById(sectionId).style.display = 'block';
+    window.scrollTo(0, 0);
 }
 
 function goBack() {
@@ -20,9 +31,19 @@ function goBack() {
 function checkProgress() {
     const id = document.getElementById('studentID').value;
     const res = document.getElementById('gradeResult');
+    
     if (studentRecords[id]) {
-        res.innerHTML = `<p style="color:green; font-weight:bold;">Welcome, ${studentRecords[id].name}!</p>`;
+        const s = studentRecords[id];
+        res.innerHTML = `
+            <div class="card" style="margin-top: 20px;">
+                <h4>Welcome, ${s.name}!</h4>
+                <p>Level: ${s.grade}</p>
+                <hr>
+                <p>Math: ${s.math} | Science: ${s.science} | English: ${s.english}</p>
+                <p>Attendance: ${s.attendance}</p>
+            </div>
+        `;
     } else {
-        res.innerHTML = `<p style="color:red;">Invalid Student ID</p>`;
+        res.innerHTML = `<p style="color:red; margin-top:10px;">ID not found. Try 103874120102.</p>`;
     }
 }

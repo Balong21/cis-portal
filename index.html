@@ -14,6 +14,7 @@
                 <img src="CIS logo.png" alt="CIS Logo" class="sias-logo">
                 <h1>Cumabao Integrated School</h1>
                 <p>Peñablanca, Cagayan</p>
+                <div class="version-tag">SIAS Online 3.0</div>
             </header>
 
             <div class="portal-grid">
@@ -30,21 +31,38 @@
         <button class="back-link" onclick="goBack()">← Back to Portal</button>
         
         <section id="teachers" class="content-section">
-            <h3>👩‍🏫 Instructor Directory</h3>
+            <h3>👩‍🏫 Faculty Directory</h3>
             <div class="teacher-grid">
                 <div class="card teacher-card">
                     <img src="teacher1.jpg" class="teacher-photo">
                     <h4>Mrs. Reyes</h4>
-                    <p>Adviser</p>
+                    <p>Grade 1 Adviser</p>
                 </div>
+                <div class="card teacher-card">
+                    <img src="teacher2.jpg" class="teacher-photo">
+                    <h4>Mr. Bautista</h4>
+                    <p>Grade 6 Math</p>
                 </div>
+                <div class="card teacher-card">
+                    <img src="teacher3.jpg" class="teacher-photo">
+                    <h4>Ms. Gomez</h4>
+                    <p>Science Department</p>
+                </div>
+            </div>
         </section>
 
         <section id="tracker" class="content-section">
-            <h3>📊 Student Tracker</h3>
+            <h3>📊 Student Portal</h3>
+            <p>Please enter your identification number.</p>
             <input type="text" id="studentID" placeholder="Enter ID (103874120102)">
             <button class="portal-btn" onclick="checkProgress()">Login</button>
             <div id="gradeResult"></div>
+        </section>
+
+        <section id="announcements" class="content-section">
+            <h3>📢 Latest Advisories</h3>
+            <div class="card urgent"><p>Class suspensions will be posted here.</p></div>
+            <div class="card"><p>PTA Meeting: Join us this Friday at 3:00 PM.</p></div>
         </section>
     </main>
 
