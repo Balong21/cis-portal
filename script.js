@@ -10,15 +10,12 @@ const studentRecords = {
 };
 
 function enterSection(sectionId) {
-    // Hide home screen, show content container
     document.getElementById('portal-home').style.display = 'none';
     document.getElementById('portal-content').classList.remove('hidden');
     
-    // Hide all individual sections first
     const sections = document.querySelectorAll('.content-section');
     sections.forEach(s => s.style.display = 'none');
     
-    // Show the requested section
     document.getElementById(sectionId).style.display = 'block';
     window.scrollTo(0, 0);
 }
@@ -44,6 +41,6 @@ function checkProgress() {
             </div>
         `;
     } else {
-        res.innerHTML = `<p style="color:red; margin-top:10px;">ID not found. Try 103874120102.</p>`;
+        res.innerHTML = `<p style="color:red; margin-top:10px;">ID not found.</p>`;
     }
 }
