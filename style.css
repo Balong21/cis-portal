@@ -1,106 +1,95 @@
-/* --- COMPLETE style.css --- */
-
-body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    margin: 0;
-    background-color: #f9fdfa;
-    color: #333;
-    scroll-behavior: smooth;
-}
-
-/* 1. Header & Navigation (Logo size defined here: 60px) */
-nav {
-    background: #1b4d2e;
-    color: white;
-    padding: 15px 5%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.logo-container { display: flex; flex-direction: column; align-items: center; text-align: center; }
-.school-logo { width: 60px; height: 60px; border-radius: 50%; background: white; margin-bottom: 5px; }
-
-nav h2 { margin: 0; font-size: 1.3rem; }
-nav span { font-size: 0.8rem; opacity: 0.8; }
-
-nav ul { list-style: none; display: flex; justify-content: center; gap: 30px; padding: 0; margin: 0; }
-nav ul li a { color: white; text-decoration: none; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.3s; }
-nav ul li a:hover { color: #a5d6a7; }
-
-/* 2. Hero Section */
-.hero {
-    height: 400px;
-    background: url('BG.jpg') no-repeat center center/cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.hero-overlay {
-    background: rgba(0, 0, 0, 0.2); 
-    width: 100%;
+body, html {
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-shadow: 2px 2px 10px rgba(0,0,0,1); 
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.hero h1 { font-size: 3rem; margin-bottom: 10px; font-weight: bold; }
+/* Background setup using your ilabcis image */
+.sias-wrapper {
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
+                url('ilabcis.png') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-/* 3. Sections & Core Card styling */
+.sias-container {
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.sias-logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.sias-header h1 {
+    font-size: 1.5rem;
+    margin: 5px 0;
+    color: #000;
+}
+
+.sias-header p {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+/* Button styles matching your ISAP screenshot */
+.portal-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.portal-btn {
+    background-color: #4e73df; /* The specific blue from your image */
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 25px; /* Rounded pill shape */
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.portal-btn:hover {
+    background-color: #2e59d9;
+    transform: scale(1.02);
+}
+
 .hidden { display: none; }
 
+/* Instructor Photo size (60px like the logo) */
+.teacher-photo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #4e73df;
+}
+
 .content-section {
-    padding: 40px 10%;
-    animation: fadeIn 0.5s ease-in-out;
+    background: white;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 600px;
+    text-align: center;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+.back-link {
+    background: none;
+    border: none;
+    color: #4e73df;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 20px;
 }
-
-.card { background: white; padding: 20px; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-left: 5px solid #2e7d32; }
-.urgent { border-left-color: #d32f2f; background-color: #fffafa; }
-
-/* 4. Teacher Directory (UPDATED Photo Styling) */
-.teacher-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; }
-
-.teacher-card { 
-    text-align: center; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    /* Reduced padding to suit the smaller photo */
-    padding: 15px 10px; 
-}
-
-/* UPDATED SIZE to match the 60px logo */
-.teacher-photo { 
-    width: 60px; 
-    height: 60px; 
-    border-radius: 50%; /* Circular */
-    object-fit: cover; /* Prevents stretch */
-    margin-bottom: 10px; /* Reduced space below photo */
-    border: 3px solid #1b4d2e; /* Green border from your portal */
-}
-
-/* Adjusting text size to match the smaller photo scale */
-.teacher-card h4 { margin: 0; font-size: 1.1rem; }
-.teacher-card p { margin: 5px 0 0 0; font-size: 0.9rem; color: #666; }
-
-/* 5. Tracker Section */
-.highlight-section { background: #eef7f0; text-align: center; border-radius: 15px; }
-input { padding: 12px; width: 250px; border: 2px solid #a5d6a7; border-radius: 5px; outline: none; }
-button { padding: 12px 25px; background: #1b4d2e; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
-
-/* 6. Footer */
-footer { background: #1b4d2e; color: white; text-align: center; padding: 20px; margin-top: 40px; }
