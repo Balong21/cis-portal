@@ -1,8 +1,7 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     margin: 0;
-    /* Uses the light gray background typical of SIAS */
-    background: #f4f7f6; 
+    background: #f4f7f6;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,79 +13,43 @@ body {
     padding-top: 50px;
     width: 100%;
     max-width: 500px;
+    transition: opacity 0.3s ease;
 }
 
-.sias-logo {
-    width: 120px;
-    height: 120px;
-    margin-bottom: 10px;
-}
+.sias-logo { width: 120px; height: 120px; margin-bottom: 10px; }
+.sias-header h1 { color: #1b4d2e; margin: 5px 0; }
+.version-tag { color: #2e7d32; font-weight: bold; font-size: 0.8rem; }
 
-.sias-header h1 {
-    color: #1b4d2e;
-    margin: 5px 0;
-    font-size: 1.8rem;
-}
+.portal-grid { display: flex; flex-direction: column; gap: 12px; margin-top: 30px; padding: 0 20px; }
 
-.sias-header p {
-    color: #666;
-    margin: 0;
-}
-
-.version-tag {
-    font-size: 0.8rem;
-    color: #2e7d32;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-/* The Portal Buttons */
-.portal-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 30px;
-    padding: 0 20px;
-}
-
+/* CIS Green Buttons */
 .portal-btn {
     padding: 15px;
     font-size: 1rem;
     font-weight: bold;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    background: white;
-    color: #333;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background: #1b4d2e; /* CIS Green */
+    color: white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     transition: 0.3s;
 }
 
-/* Green theme for buttons */
-.portal-btn:hover {
-    background: #1b4d2e;
-    color: white;
-}
+.portal-btn:hover { background: #2e7d32; transform: translateY(-2px); }
 
-.admission-link {
-    display: block;
-    margin-top: 25px;
+.hidden { display: none !important; }
+
+/* Content Pages Styling */
+#portal-content { width: 100%; max-width: 800px; padding: 20px; display: none; }
+.content-section { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+
+.back-btn {
+    background: none;
+    border: none;
     color: #1b4d2e;
-    text-decoration: none;
     font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-size: 1rem;
 }
-
-/* Section Transitions */
-.hidden { display: none; }
-.content-section {
-    width: 90%;
-    max-width: 800px;
-    margin: 20px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
-
-.teacher-photo { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; }
-input { padding: 10px; border: 1px solid #ddd; border-radius: 4px; width: 200px; }
