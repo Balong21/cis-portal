@@ -8,31 +8,28 @@
 </head>
 <body>
 
-    <!-- Main Entry Portal Home -->
     <div id="portal-home" class="sias-wrapper">
         <div class="sias-container">
             <header class="sias-header">
-                <img src="CIS logo.png" alt="CIS Logo" class="sias-logo">
+                <img src="cover.jpg" alt="CIS Logo" class="sias-logo">
                 <h1>Cumabao Integrated School</h1>
-                <p>Tumauini, Isabela</p>
+                <p>Peñablanca, Cagayan</p>
                 <div class="version-tag">SIAS Online 3.0</div>
             </header>
 
             <div class="portal-grid">
-                <button class="portal-btn" onclick="enterSection('announcements')">Administrator</button>
-                <button class="portal-btn" onclick="enterSection('teachers')">Instructor</button>
-                <button class="portal-btn" onclick="enterSection('tracker')">Student</button>
-                <button class="portal-btn" onclick="enterSection('announcements')">Parent</button>
+                <button class="portal-btn" onclick="openLogin('administrator')">Administrator</button>
+                <button class="portal-btn" onclick="openLogin('instructor')">Instructor</button>
+                <button class="portal-btn" onclick="openLogin('student')">Student</button>
+                <button class="portal-btn" onclick="openLogin('parent')">Parent</button>
                 <button class="portal-btn admission" onclick="alert('Admission system opening soon!')">Apply for Admission</button>
             </div>
         </div>
     </div>
 
-    <!-- Hidden Content Sections -->
     <main id="portal-content" class="hidden">
         <button class="back-link" onclick="goBack()">← Back to Portal</button>
         
-        <!-- Faculty Section -->
         <section id="teachers" class="content-section">
             <h3>👩‍🏫 Faculty & Staff Directory</h3>
             <p>(Click a profile to view student list)</p>
@@ -53,33 +50,28 @@
                     <p>Science Department</p>
                 </div>
                 <div class="card teacher-card" onclick="showStudents('Mr. Santos')">
-                    <img src="teacher5.jpg" class="teacher-photo">
+                    <img src="history.jpg" class="teacher-photo">
                     <h4>Mr. Santos</h4>
                     <p>History / AP</p>
                 </div>
                 <div class="card teacher-card" onclick="showStudents('Coach Dela Cruz')">
-                    <img src="teacher4.jpg" class="teacher-photo">
+                    <img src="sports.jpg" class="teacher-photo">
                     <h4>Coach Dela Cruz</h4>
                     <p>Sports Coordinator</p>
                 </div>
                 <div class="card teacher-card" onclick="showStudents('Nurse Anne')">
-                    <img src="teacher6.png" class="teacher-photo">
+                    <img src="clinic.jpg" class="teacher-photo">
                     <h4>Nurse Anne</h4>
                     <p>School Clinic</p>
                 </div>
             </div>
         </section>
 
-        <!-- Student Progress Tracker -->
         <section id="tracker" class="content-section">
             <h3>📊 Student Portal</h3>
-            <p>Please enter your identification number.</p>
-            <input type="text" id="studentID" placeholder="Enter ID (103874120102)">
-            <button class="portal-btn" onclick="checkProgress()">Login</button>
             <div id="gradeResult"></div>
         </section>
 
-        <!-- Announcements -->
         <section id="announcements" class="content-section">
             <h3>📢 Latest Advisories</h3>
             <div class="card urgent"><p>Weather Update: Classes are currently regular.</p></div>
@@ -87,7 +79,29 @@
         </section>
     </main>
 
-    <!-- Student List Pop-up Modal -->
+    <div id="login-modal" class="modal hidden">
+        <div class="modal-content auth-card">
+            <span class="close-modal" onclick="closeLoginModal()">&times;</span>
+            <div id="login-type-header" class="auth-header">Student</div>
+            
+            <div class="auth-body">
+                <div class="input-group">
+                    <input type="text" id="userID" placeholder="User ID">
+                    <span class="icon">👁️</span>
+                </div>
+
+                <div class="input-group">
+                    <input type="password" id="userPass" placeholder="Password">
+                    <span class="icon" onclick="togglePass()">👁️</span>
+                </div>
+
+                <button class="login-btn" onclick="validateLogin()">Login</button>
+                <button class="forgot-btn">Forgot Password</button>
+                <div id="loginError"></div>
+            </div>
+        </div>
+    </div>
+
     <div id="student-modal" class="modal hidden">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal()">&times;</span>

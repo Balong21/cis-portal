@@ -1,8 +1,4 @@
-body, html {
-    height: 100%;
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+body, html { height: 100%; margin: 0; font-family: 'Segoe UI', sans-serif; }
 
 /* Background setup */
 .sias-wrapper {
@@ -10,57 +6,47 @@ body, html {
     width: 100%;
     background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
                 url('ilabcis.png') no-repeat center center/cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex; justify-content: center; align-items: center;
 }
 
-.sias-container {
-    text-align: center;
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-}
-
+.sias-container { text-align: center; width: 100%; max-width: 400px; padding: 20px; }
 .sias-logo { width: 100px; height: auto; margin-bottom: 10px; }
 .sias-header h1 { font-size: 1.5rem; margin: 5px 0; color: #1b4d2e; }
 .version-tag { font-size: 0.8rem; color: #2e7d32; font-weight: bold; margin-bottom: 25px; }
 
-/* Blue Pill Buttons */
+/* Blue Home Buttons */
 .portal-grid { display: flex; flex-direction: column; gap: 10px; }
 .portal-btn {
-    background-color: #4e73df;
-    color: white;
-    padding: 12px;
-    border: none;
-    border-radius: 25px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: 0.3s;
+    background-color: #4e73df; color: white; padding: 12px;
+    border: none; border-radius: 25px; font-size: 1.1rem;
+    font-weight: bold; cursor: pointer; transition: 0.3s;
 }
 .portal-btn:hover { background-color: #2e59d9; transform: scale(1.02); }
 
+/* AUTH CARD (Matches your Screenshot) */
+.auth-card { border-radius: 30px !important; padding: 0 0 30px 0 !important; overflow: hidden; }
+.auth-header { background-color: #4e73df; color: white; padding: 15px; font-size: 1.5rem; font-weight: bold; margin-bottom: 30px; }
+.auth-body { padding: 0 20px; }
+.input-group { position: relative; width: 90%; margin: 0 auto 20px auto; }
+.input-group input {
+    width: 100%; border: none; border-bottom: 2px solid #6f42c1; 
+    padding: 10px 0; font-size: 1.2rem; outline: none; background: transparent;
+}
+.input-group .icon { position: absolute; right: 0; top: 10px; cursor: pointer; opacity: 0.6; }
+
+.login-btn { background-color: #4fc3f7; color: white; width: 90%; padding: 12px; border: none; border-radius: 25px; font-size: 1.2rem; font-weight: bold; cursor: pointer; margin-top: 10px; }
+.forgot-btn { background-color: #9e9e9e; color: white; width: 90%; padding: 12px; border: none; border-radius: 25px; font-size: 1.2rem; font-weight: bold; cursor: pointer; margin-top: 15px; }
+
+/* Modal & Content */
 .hidden { display: none !important; }
-
-/* Content Areas */
-#portal-content { width: 100%; max-width: 800px; margin: auto; padding: 20px; }
-.content-section { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center; }
-.card { background: #f8f9fc; padding: 15px; border-radius: 10px; margin-bottom: 10px; border-left: 5px solid #4e73df; text-align: left; }
-
-/* Instructor Photos (60px) */
-.teacher-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-top: 20px; }
-.teacher-card { display: flex; flex-direction: column; align-items: center; border: none; background: none; cursor: pointer; transition: 0.2s; }
-.teacher-card:hover { transform: translateY(-5px); }
-.teacher-photo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid #4e73df; margin-bottom: 10px; }
-
-/* Modal Pop-up Styling */
 .modal { position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; }
 .modal-content { background: white; padding: 25px; border-radius: 15px; width: 85%; max-width: 350px; text-align: center; position: relative; }
 .close-modal { position: absolute; top: 10px; right: 15px; font-size: 25px; cursor: pointer; color: #888; }
-#student-list { list-style: none; padding: 0; margin-top: 20px; text-align: left; }
-#student-list li { padding: 8px; border-bottom: 1px solid #eee; }
 
-.back-link { background: none; border: none; color: #4e73df; font-weight: bold; cursor: pointer; margin: 20px 0; font-size: 1rem; }
-input { padding: 12px; width: 80%; border: 1px solid #ddd; border-radius: 25px; margin-bottom: 15px; text-align: center; outline: none; }
+#portal-content { width: 100%; max-width: 800px; margin: auto; padding: 20px; }
+.content-section { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center; }
+.teacher-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; }
+.teacher-photo { width: 60px; height: 60px; border-radius: 50%; border: 2px solid #4e73df; object-fit: cover; }
+.card { background: #f8f9fc; padding: 15px; border-radius: 10px; margin-bottom: 10px; border-left: 5px solid #4e73df; text-align: left; }
+.back-link { background: none; border: none; color: #4e73df; font-weight: bold; cursor: pointer; margin: 20px 0; }
+#loginError { color: red; margin-top: 10px; font-size: 0.8rem; }

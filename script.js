@@ -1,54 +1,77 @@
-const studentRecords = {
-    "103874120102": { name: "Lloyd Pogi", grade: "Grade 5", math: "98", science: "97", english: "99", attendance: "100%" }
+let currentLoginType = "";
+
+const studentDB = {
+    "103874120102": { name: "Lloyd Pogi", pass: "123", grade: "Grade 5", math: "98", science: "97" }
+};
+
+const instructorDB = {
+    "admin_1": { name: "Mrs. Reyes", pass: "admin123" }
 };
 
 const instructorStudents = {
-    "Mrs. Reyes": ["Juan Dela Cruz", "Maria Clara", "Pedro Penduko"],
-    "Mr. Bautista": ["Lloyd Pogi", "Angel Locsin", "Ricardo Dalisay"],
-    "Ms. Gomez": ["Liza Soberano", "Enrique Gil", "Kathryn Bernardo"],
-    "Mr. Santos": ["Jose Rizal", "Andres Bonifacio", "Apolinario Mabini"],
-    "Coach Dela Cruz": ["Manny Pacquiao", "Hidilyn Diaz", "Kai Sotto"],
-    "Nurse Anne": ["Health Club Member A", "Health Club Member B"]
+    "Mrs. Reyes": ["Juan Dela Cruz", "Maria Clara"],
+    "Mr. Bautista": ["Lloyd Pogi", "Ricardo Dalisay"],
+    "Ms. Gomez": ["Liza Soberano", "Enrique Gil"],
+    "Mr. Santos": ["Jose Rizal", "Andres Bonifacio"],
+    "Coach Dela Cruz": ["Manny Pacquiao", "Kai Sotto"],
+    "Nurse Anne": ["Health Club Member A"]
 };
 
-function enterSection(sectionId) {
-    document.getElementById('portal-home').style.display = 'none';
-    document.getElementById('portal-content').classList.remove('hidden');
-    const sections = document.querySelectorAll('.content-section');
-    sections.forEach(s => s.style.display = 'none');
-    document.getElementById(sectionId).style.display = 'block';
+function openLogin(type) {
+    currentLoginType = type;
+    document.getElementById('login-type-header').innerText = type.charAt(0).toUpperCase() + type.slice(1);
+    document.getElementById('login-modal').classList.remove('hidden');
 }
 
-function goBack() {
-    document.getElementById('portal-home').style.display = 'flex';
-    document.getElementById('portal-content').classList.add('hidden');
+function closeLoginModal() {
+    document.getElementById('login-modal').classList.add('hidden');
+    document.getElementById('userID').value = "";
+    document.getElementById('userPass').value = "";
+}
+
+function togglePass() {
+    const p = document.getElementById('userPass');
+    p.type = p.type === "password" ? "text" : "password";
+}
+
+function validateLogin() {
+    const id = document.getElementById('userID').value;
+    const pass = document.getElementById('userPass').value;
+    const err = document.getElementById('loginError');
+
+    let db = (currentLoginType === 'student') ? studentDB : instructorDB;
+
+    if (db[id] && db[id].pass === pass) {
+        err.innerText = "";
+        closeLoginModal();
+        document.getElementById('portal-home').style.display = 'none';
+        document.getElementById('portal-content').classList.remove('hidden');
+        
+        const target = (currentLoginType === 'student') ? 'tracker' : 'teachers';
+        const sections = document.querySelectorAll('.content-section');
+        sections.forEach(s => s.style.display = 'none');
+        document.getElementById(target).style.display = 'block';
+
+        if(currentLoginType === 'student') {
+            document.getElementById('gradeResult').innerHTML = `<div class="card"><h4>Welcome, ${db[id].name}</h4><p>Math: ${db[id].math}</p></div>`;
+        }
+    } else {
+        err.innerText = "Invalid ID or Password!";
+    }
 }
 
 function showStudents(teacherName) {
     const modal = document.getElementById('student-modal');
-    const nameHeader = document.getElementById('modal-teacher-name');
+    document.getElementById('modal-teacher-name').innerText = "Students of " + teacherName;
     const list = document.getElementById('student-list');
-    nameHeader.innerText = "Students of " + teacherName;
-    list.innerHTML = ""; 
-    instructorStudents[teacherName].forEach(student => {
+    list.innerHTML = "";
+    instructorStudents[teacherName].forEach(s => {
         let li = document.createElement('li');
-        li.innerText = "• " + student;
+        li.innerText = "• " + s;
         list.appendChild(li);
     });
     modal.classList.remove('hidden');
 }
 
-function closeModal() {
-    document.getElementById('student-modal').classList.add('hidden');
-}
-
-function checkProgress() {
-    const id = document.getElementById('studentID').value;
-    const res = document.getElementById('gradeResult');
-    if (studentRecords[id]) {
-        const s = studentRecords[id];
-        res.innerHTML = `<div class="card" style="margin-top:20px;"><h4>Welcome, ${s.name}!</h4><p>Level: ${s.grade}</p><hr><p>Math: ${s.math} | Science: ${s.science}</p></div>`;
-    } else {
-        res.innerHTML = `<p style="color:red; margin-top:10px;">ID not found.</p>`;
-    }
-}
+function closeModal() { document.getElementById('student-modal').classList.add('hidden'); }
+function goBack() { document.getElementById('portal-home').style.display = 'flex'; document.getElementById('portal-content').classList.add('hidden'); }
