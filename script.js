@@ -1,28 +1,23 @@
-let currentLogin = "";
+let currentLoginType = "";
 
-// --- THE USER DATABASE ---
 const userDatabase = {
-    // Students
     "103874120102": { name: "Lloyd Pogi", pass: "student123", role: "student", math: "98", science: "97" },
-    "103874120103": { name: "Maria Clara", pass: "pass456", role: "student", math: "85", science: "90" },
-    
-    // Instructors
+    "103874120103": { name: "Maria Clara", pass: "pass456", role: "student", math: "88", science: "92" },
     "teacher_reyes": { name: "Mrs. Reyes", pass: "reyes2026", role: "instructor" },
     "teacher_bautista": { name: "Mr. Bautista", pass: "math101", role: "instructor" }
 };
 
-// Data for the Faculty Pop-ups
 const instructorStudents = {
     "Mrs. Reyes": ["Juan Dela Cruz", "Maria Clara", "Pedro Penduko"],
     "Mr. Bautista": ["Lloyd Pogi", "Angel Locsin", "Ricardo Dalisay"]
 };
 
 function openLogin(type) {
-    currentLogin = type.toLowerCase();
+    currentLoginType = type.toLowerCase();
     document.getElementById('main-menu').classList.add('hidden');
     document.getElementById('login-section').classList.remove('hidden');
     document.getElementById('login-type-label').innerText = type;
-    document.getElementById('loginError').innerText = ""; // Clear errors
+    document.getElementById('loginError').innerText = "";
 }
 
 function togglePass() {
@@ -37,48 +32,49 @@ function validateLogin() {
 
     const user = userDatabase[id];
 
-    // 1. Check if user exists and password matches
     if (user && user.pass === pass) {
-        // 2. Check if they are logging into the correct role (e.g., student trying to login as student)
-        if (user.role === currentLogin) {
-            loginSuccess(user);
+        if (user.role === currentLoginType || (currentLoginType === 'administrator' && user.role === 'instructor')) {
+            showPortalContent(user);
         } else {
-            err.innerText = "Access Denied: Wrong portal for this ID.";
+            err.innerText = "Access Denied: Wrong Portal";
         }
     } else {
         err.innerText = "Invalid ID or Password!";
     }
 }
 
-function loginSuccess(user) {
+function showPortalContent(user) {
     document.getElementById('portal-home').style.display = 'none';
     document.getElementById('portal-content').classList.remove('hidden');
-    
     document.querySelectorAll('.content-section').forEach(s => s.style.display = 'none');
 
     if (user.role === 'student') {
         document.getElementById('tracker').style.display = 'block';
         document.getElementById('gradeResult').innerHTML = `
             <div class="card">
-                <h4>Welcome, ${user.name}!</h4>
+                <h4>Welcome back, ${user.name}!</h4>
                 <p><strong>Math:</strong> ${user.math}</p>
                 <p><strong>Science:</strong> ${user.science}</p>
             </div>`;
-    } else if (user.role === 'instructor') {
+    } else {
         document.getElementById('teachers').style.display = 'block';
     }
 }
 
-function goBack() {
-    document.getElementById('portal-content').classList.add('hidden');
-    document.getElementById('login-section').classList.add('hidden');
-    document.getElementById('portal-home').style.display = 'flex';
-    document.getElementById('main-menu').classList.remove('hidden');
-    document.getElementById('userID').value = "";
-    document.getElementById('userPass').value = "";
+function showStudents(teacherName) {
+    document.getElementById('modal-teacher-name').innerText = teacherName;
+    const list = document.getElementById('student-list');
+    list.innerHTML = "";
+    instructorStudents[teacherName].forEach(s => {
+        let li = document.createElement('li');
+        li.innerText = "• " + s;
+        list.appendChild(li);
+    });
+    document.getElementById('student-modal').classList.remove('hidden');
 }
 
-// Reuse your existing modal functions for the Instructor section
-function showStudents(teacherName) {
-    // ... (Keep your existing showStudents logic here)
+function closeModal() { document.getElementById('student-modal').classList.add('hidden'); }
+
+function goBack() {
+    location.reload(); // Simplest way to reset the view
 }
