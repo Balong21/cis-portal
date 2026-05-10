@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CIS - SIAS Online 3</title>
+    <title>CIS - SIAS Online 3.7</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,28 +11,30 @@
     <div id="portal-home" class="sias-wrapper">
         <div class="sias-top-bar">SIAS Online 3.7.5.10</div>
 
-        <div class="sias-container">
+        <div class="sias-container fade-in">
             <header class="sias-header">
                 <img src="CIS logo.png" alt="Logo" class="sias-logo">
                 <h1 class="school-name">Cumabao Integrated School</h1>
                 <p class="school-location">Tumauini, Isabela</p>
             </header>
 
+            <!-- Main Portal Selection -->
             <div id="main-menu" class="portal-grid">
                 <button class="portal-btn" onclick="openLogin('Administrator')">Administrator</button>
                 <button class="portal-btn" onclick="openLogin('Instructor')">Instructor</button>
                 <button class="portal-btn" onclick="openLogin('Student')">Student</button>
                 <button class="portal-btn" onclick="openLogin('Parent')">Parent</button>
-                <button class="portal-btn admission" onclick="alert('System Opening Soon')">Apply for Admission</button>
+                <button class="portal-btn admission" onclick="alert('Admission System Opening Soon')">Apply for Admission</button>
             </div>
 
+            <!-- Login Section -->
             <div id="login-section" class="hidden">
                 <button id="login-type-label" class="portal-btn active-label"></button>
                 
                 <div class="auth-fields">
                     <div class="input-container">
                         <input type="text" id="userID" placeholder="User ID">
-                        <span class="eye-icon">👁️</span>
+                        <span class="eye-icon">👤</span>
                     </div>
                     <div class="input-container">
                         <input type="password" id="userPass" placeholder="Password">
@@ -40,43 +42,51 @@
                     </div>
                     
                     <button class="login-action-btn" onclick="validateLogin()">Login</button>
-                    <button class="forgot-action-btn">Forgot Password</button>
+                    <button class="forgot-action-btn" onclick="location.reload()">Back to Menu</button>
                     <div id="loginError"></div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Main Dashboard Content -->
     <main id="portal-content" class="hidden">
-        <button class="back-link" onclick="goBack()">← Back to Portal</button>
+        <nav class="dashboard-nav">
+            <button class="back-link" onclick="goBack()">← Logout</button>
+            <span id="user-display-name" style="padding-right: 20px; color: #555;"></span>
+        </nav>
         
+        <!-- Instructor/Admin View -->
         <section id="teachers" class="content-section">
-            <h3>Faculty & Staff</h3>
+            <h3 id="view-title">Faculty & Staff</h3>
             <div class="teacher-grid">
                 <div class="card teacher-card" onclick="showStudents('Mrs. Reyes')">
-                    <img src="teacher1.jpg" class="teacher-photo">
+                    <img src="teacher1.jpg" alt="Photo" class="teacher-photo">
                     <h4>Mrs. Reyes</h4>
                     <p>Grade 1 Adviser</p>
                 </div>
                 <div class="card teacher-card" onclick="showStudents('Mr. Bautista')">
-                    <img src="teacher2.jpg" class="teacher-photo">
+                    <img src="teacher2.jpg" alt="Photo" class="teacher-photo">
                     <h4>Mr. Bautista</h4>
                     <p>Grade 6 Math</p>
                 </div>
             </div>
         </section>
 
+        <!-- Student View -->
         <section id="tracker" class="content-section">
             <h3>Student Academic Record</h3>
             <div id="gradeResult"></div>
         </section>
     </main>
 
+    <!-- Student List Modal -->
     <div id="student-modal" class="modal hidden">
-        <div class="modal-content">
+        <div class="modal-content fade-in">
             <span class="close-modal" onclick="closeModal()">&times;</span>
             <h3 id="modal-teacher-name">Instructor</h3>
-            <ul id="student-list" style="text-align:left; list-style:none; padding:0;"></ul>
+            <hr>
+            <ul id="student-list" style="text-align:left; list-style:none; padding:0; line-height: 2;"></ul>
         </div>
     </div>
 
