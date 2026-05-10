@@ -1,11 +1,7 @@
-let currentLoginType = "";
+let currentType = "";
 
-const studentDB = {
+const db = {
     "103874120102": { name: "Lloyd Pogi", pass: "123", grade: "Grade 5", math: "98", science: "97" }
-};
-
-const instructorDB = {
-    "admin_1": { name: "Mrs. Reyes", pass: "admin123" }
 };
 
 const instructorStudents = {
@@ -18,8 +14,8 @@ const instructorStudents = {
 };
 
 function openLogin(type) {
-    currentLoginType = type;
-    document.getElementById('login-type-header').innerText = type.charAt(0).toUpperCase() + type.slice(1);
+    currentType = type.toLowerCase();
+    document.getElementById('login-type-header').innerText = type;
     document.getElementById('login-modal').classList.remove('hidden');
 }
 
@@ -31,7 +27,7 @@ function closeLoginModal() {
 
 function togglePass() {
     const p = document.getElementById('userPass');
-    p.type = p.type === "password" ? "text" : "password";
+    p.type = (p.type === "password") ? "text" : "password";
 }
 
 function validateLogin() {
@@ -39,24 +35,25 @@ function validateLogin() {
     const pass = document.getElementById('userPass').value;
     const err = document.getElementById('loginError');
 
-    let db = (currentLoginType === 'student') ? studentDB : instructorDB;
-
     if (db[id] && db[id].pass === pass) {
-        err.innerText = "";
         closeLoginModal();
         document.getElementById('portal-home').style.display = 'none';
         document.getElementById('portal-content').classList.remove('hidden');
         
-        const target = (currentLoginType === 'student') ? 'tracker' : 'teachers';
-        const sections = document.querySelectorAll('.content-section');
-        sections.forEach(s => s.style.display = 'none');
+        const target = (currentType === 'student') ? 'tracker' : 'teachers';
+        document.querySelectorAll('.content-section').forEach(s => s.style.display = 'none');
         document.getElementById(target).style.display = 'block';
 
-        if(currentLoginType === 'student') {
-            document.getElementById('gradeResult').innerHTML = `<div class="card"><h4>Welcome, ${db[id].name}</h4><p>Math: ${db[id].math}</p></div>`;
+        if(currentType === 'student') {
+            document.getElementById('gradeResult').innerHTML = `
+                <div class="card">
+                    <h4>Welcome, ${db[id].name}</h4>
+                    <p>Math Grade: ${db[id].math}</p>
+                    <p>Science Grade: ${db[id].science}</p>
+                </div>`;
         }
     } else {
-        err.innerText = "Invalid ID or Password!";
+        err.innerText = "Invalid ID or Password";
     }
 }
 
@@ -68,6 +65,7 @@ function showStudents(teacherName) {
     instructorStudents[teacherName].forEach(s => {
         let li = document.createElement('li');
         li.innerText = "• " + s;
+        li.style.textAlign = "left";
         list.appendChild(li);
     });
     modal.classList.remove('hidden');
